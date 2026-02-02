@@ -27,6 +27,7 @@ export default function App() {
     placeholderData: keepPreviousData,
     retry: 1,
     enabled: page > 0,
+    staleTime: Infinity,
   });
   const posts = data?.posts || [];
   const totalPages = data ? Math.ceil(data.totalCount / LIMIT) : 0;
@@ -77,7 +78,20 @@ export default function App() {
             <EditPostForm onClose={handleCloseModal} post={selectedPost} />
           </Modal>
         )}
-        {isError && <p>Error</p>}
+        {isError && (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: 25,
+              fontWeight: 700,
+              color: "red",
+              border: "1px solid red",
+              padding: 12,
+            }}
+          >
+            Error "No posts found"
+          </p>
+        )}
         {isSuccess && posts.length > 0 && (
           <PostList posts={posts} onSelectPost={handleEdit} />
         )}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Post } from "../types/post";
+import toast from "react-hot-toast";
 
 axios.defaults.baseURL = "https://6980937a6570ee87d50fb41f.mockapi.io/";
 
@@ -18,6 +19,9 @@ export const fetchPosts = async (
   const totalRes = await axios.get("/posts", {
     params: { search: searchText || undefined },
   });
+  if (res.data.length === 0) {
+    toast.error("No posts for your query");
+  }
   return {
     posts: res.data,
     totalCount: totalRes.data.length,
