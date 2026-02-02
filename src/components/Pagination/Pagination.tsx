@@ -21,6 +21,7 @@ export default function Pagination({
       forcePage={currentPage - 1}
       containerClassName={css.pagination}
       activeClassName={css.active}
+      disabledClassName={css.disabled}
       nextLabel="→"
       previousLabel="←"
     />

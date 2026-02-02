@@ -13,7 +13,9 @@
   cursor: pointer;
   min-width: 36px;
   height: 36px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   background-color: #ffffff;
 }
 
@@ -45,4 +47,7 @@
 
 .pagination li.active:hover {
   background-color: #2d6a4f;
+}
+.pagination .disabled {
+  opacity: 0.2;
 }
