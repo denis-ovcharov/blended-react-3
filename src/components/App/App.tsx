@@ -13,7 +13,7 @@ import { Toaster } from "react-hot-toast";
 import EditPostForm from "../EditPostForm/EditPostForm";
 import { useDebouncedCallback } from "use-debounce";
 
-const LIMIT = 9;
+const LIMIT = 12;
 
 export default function App() {
   const [page, setPage] = useState(1);
