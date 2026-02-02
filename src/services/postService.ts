@@ -20,7 +20,7 @@ export const fetchPosts = async (
     params: { search: searchText || undefined },
   });
   if (res.data.length === 0) {
-    toast.error("No posts for your query");
+    toast.error("No posts found");
   }
   return {
     posts: res.data,

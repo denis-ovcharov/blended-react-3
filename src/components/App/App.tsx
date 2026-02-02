@@ -13,7 +13,7 @@ import { Toaster } from "react-hot-toast";
 import EditPostForm from "../EditPostForm/EditPostForm";
 import { useDebouncedCallback } from "use-debounce";
 
-const LIMIT = 12;
+const LIMIT = 9;
 
 export default function App() {
   const [page, setPage] = useState(1);
@@ -21,6 +21,7 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   type ModalType = "create" | "edit" | null;
   const [isVisible, setIsVisible] = useState<ModalType>(null);
+
   const { data, isSuccess, isError } = useQuery({
     queryKey: ["posts", query, page],
     queryFn: () => fetchPosts(query, page, LIMIT),
@@ -29,6 +30,7 @@ export default function App() {
     enabled: page > 0,
     staleTime: Infinity,
   });
+
   const posts = data?.posts || [];
   const totalPages = data ? Math.ceil(data.totalCount / LIMIT) : 0;
 
@@ -89,7 +91,7 @@ export default function App() {
               padding: 12,
             }}
           >
-            Error "No posts found"
+            Error "No posts found for your query"
           </p>
         )}
         {isSuccess && posts.length > 0 && (
